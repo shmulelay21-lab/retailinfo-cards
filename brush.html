@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<title>Electric Facial Brush — Retail Info</title>
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --card: #111827;
+    --blue: #3b82f6;
+    --green: #22c55e;
+    --gold: #f59e0b;
+    --white: #ffffff;
+    --offwhite: #e2e8f0;
+    --gray: #94a3b8;
+    --dimgray: #475569;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--white); min-height: 100vh; max-width: 420px; margin: 0 auto; }
+
+  /* PRODUCT PAGES */
+  .product-page { display: none; min-height: 100vh; }
+  .product-page.active { display: block; }
+
+  /* TOP BAR */
+  .topbar { background: var(--card); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e3a5f; position: sticky; top: 0; z-index: 10; }
+  .brand { font-size: 13px; color: var(--green); font-weight: 600; letter-spacing: 0.05em; }
+  .badge { background: #1e3a5f; color: var(--blue); font-size: 10px; padding: 3px 8px; border-radius: 20px; font-weight: 500; }
+
+  /* LANG BAR */
+  .lang-bar { display: flex; background: var(--card); border-bottom: 1px solid #1e3a5f; }
+  .lang-btn { flex: 1; padding: 10px 4px; font-size: 12px; color: var(--gray); background: none; border: none; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .lang-btn.active { color: var(--green); border-bottom: 2px solid var(--green); font-weight: 600; }
+
+  /* HERO */
+  .hero { padding: 28px 20px 20px; text-align: center; background: linear-gradient(180deg, #111827 0%, var(--bg) 100%); }
+  .product-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 36px; }
+  .icon-blue { background: #1e3a5f; border: 2px solid var(--blue); }
+  .icon-green { background: #1e2a1a; border: 2px solid var(--green); }
+  .icon-gold { background: #2a1e0a; border: 2px solid var(--gold); }
+  .category-tag { display: inline-block; font-size: 10px; padding: 4px 12px; border-radius: 20px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 10px; text-transform: uppercase; }
+  .tag-blue { background: #1e3a5f; color: var(--blue); }
+  .tag-green { background: #1a2a1a; color: var(--green); }
+  .tag-gold { background: #2a1e0a; color: var(--gold); }
+  .product-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--white); line-height: 1.2; margin-bottom: 8px; }
+  .product-question { font-size: 13px; color: var(--gray); font-style: italic; line-height: 1.5; }
+
+  /* DIVIDER */
+  .divider-blue { height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); margin: 0 20px; }
+  .divider-green { height: 1px; background: linear-gradient(90deg, transparent, var(--green), transparent); margin: 0 20px; }
+  .divider-gold { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 20px; }
+
+  /* FIELDS */
+  .fields { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .field { background: var(--card); border: 1px solid #1e3a5f; border-radius: 12px; padding: 14px 16px; animation: fadeIn 0.3s ease; }
+  .field-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .label-blue { color: var(--blue); }
+  .label-green { color: var(--green); }
+  .label-gold { color: var(--gold); }
+  .dot { width: 5px; height: 5px; border-radius: 50%; }
+  .dot-blue { background: var(--blue); }
+  .dot-green { background: var(--green); }
+  .dot-gold { background: var(--gold); }
+  .field-text { font-size: 14px; color: var(--offwhite); line-height: 1.6; }
+  .field.warning { border-color: #7c3030; background: #1a0f0f; }
+  .field.warning .field-label { color: #ef4444; }
+  .field.warning .dot { background: #ef4444 !important; }
+
+  /* FOOTER */
+  .footer { padding: 16px 20px 32px; text-align: center; }
+  .footer-note { font-size: 10px; color: var(--dimgray); line-height: 1.6; margin-bottom: 12px; }
+  .footer-brand { font-size: 11px; color: var(--blue); font-weight: 500; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  [dir="rtl"] { text-align: right; }
+  [dir="rtl"] .field-label { flex-direction: row-reverse; justify-content: flex-end; }
+</style>
+<style>.product-page{display:none}.product-page.active{display:block}</style>
+</head>
+<body>
+<div id="brush" class="product-page active">
+  <div class="topbar">
+    <div class="brand">✓ Retail Info</div>
+    <div class="badge">SCANNED</div>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('brush','en',this)">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('brush','he',this)">🇮🇱 עב</button>
+    <button class="lang-btn" onclick="setLang('brush','fr',this)">🇫🇷 FR</button>
+    <button class="lang-btn" onclick="setLang('brush','ru',this)">🇷🇺 RU</button>
+  </div>
+  <div class="hero">
+    <div class="product-icon icon-blue">🪥</div>
+    <div class="category-tag tag-blue" id="brush-cat">Personal Care</div>
+    <div class="product-name" id="brush-name">Electric Facial<br>Cleansing Brush</div>
+    <div class="product-question" id="brush-q">"How do I use this — and which setting is right for my skin?"</div>
+  </div>
+  <div class="divider-blue"></div>
+  <div class="fields">
+    <div class="field"><div class="field-label label-blue"><span class="dot dot-blue"></span><span id="brush-l1">What is this?</span></div><div class="field-text" id="brush-v1">A rechargeable electric brush for deep-cleaning pores, removing makeup residue, and gently exfoliating the skin.</div></div>
+    <div class="field"><div class="field-label label-blue"><span class="dot dot-blue"></span><span id="brush-l2">What is it used for?</span></div><div class="field-text" id="brush-v2">Daily or twice-weekly facial cleansing. Use with your regular face wash. Helps with blackheads and dull skin.</div></div>
+    <div class="field"><div class="field-label label-blue"><span class="dot dot-blue"></span><span id="brush-l3">Before buying, check:</span></div><div class="field-text" id="brush-v3">Check compatible replacement brush heads. Confirm charging cable fits your plug. USB charging is universal — no voltage issue.</div></div>
+    <div class="field warning"><div class="field-label"><span class="dot"></span><span id="brush-l4">⚠ Warning</span></div><div class="field-text" id="brush-v4">Do not use on active acne or open wounds. Replace brush head every 3 months. Do not share between users.</div></div>
+    <div class="field"><div class="field-label label-blue"><span class="dot dot-blue"></span><span id="brush-l5">Suitable for:</span></div><div class="field-text" id="brush-v5">Normal, oily, and combination skin. Not recommended for very sensitive skin without dermatologist advice.</div></div>
+  </div>
+  <div class="footer"><div class="footer-note" id="brush-fn">Information provided as guidance only.<br>Always read the product label before use.</div><div class="footer-brand">Powered by Retail Info</div></div>
+</div>
+<script>
+const translations = {
+  brush: {
+    en: { dir:"ltr", cat:"Personal Care", name:"Electric Facial<br>Cleansing Brush", q:'"How do I use this — and which setting is right for my skin?"', l1:"What is this?", v1:"A rechargeable electric brush for deep-cleaning pores, removing makeup residue, and gently exfoliating the skin.", l2:"What is it used for?", v2:"Daily or twice-weekly facial cleansing. Use with your regular face wash. Helps with blackheads and dull skin.", l3:"Before buying, check:", v3:"Check compatible replacement brush heads. Confirm charging cable fits your plug. USB charging is universal — no voltage issue.", l4:"⚠ Warning", v4:"Do not use on active acne or open wounds. Replace brush head every 3 months. Do not share between users.", l5:"Suitable for:", v5:"Normal, oily, and combination skin. Not recommended for very sensitive skin without dermatologist advice.", fn:"Information provided as guidance only.<br>Always read the product label before use." },
+    he: { dir:"rtl", cat:"טיפוח אישי", name:"מברשת ניקוי פנים<br>חשמלית", q:'"איך משתמשים בזה — ואיזו עוצמה מתאימה לעור שלי?"', l1:"מה זה?", v1:"מברשת חשמלית נטענת לניקוי עמוק של הנקבוביות, הסרת שאריות איפור וקילוף עדין של העור.", l2:"למה משתמשים?", v2:"ניקוי יומי או פעמיים בשבוע. משמשת עם סבון פנים רגיל. מסייעת בראשי שחורים ועור עמום.", l3:"לפני הקנייה:", v3:"בדוק אילו ראשי מברשת תואמים. ודא שכבל הטעינה מתאים לשקע שלך. טעינת USB אוניברסלית — אין בעיית מתח.", l4:"⚠ אזהרה", v4:"אין להשתמש על אקנה פעיל או פצעים פתוחים. החלף ראש מברשת כל 3 חודשים. אין לשתף בין משתמשים.", l5:"מתאים ל:", v5:"עור נורמלי, שמן ומעורב. לא מומלץ לעור רגיש מאוד ללא ייעוץ רופא עור.", fn:"המידע ניתן כהנחיה בלבד.<br>תמיד קרא את תווית המוצר לפני השימוש." },
+    fr: { dir:"ltr", cat:"Soin Personnel", name:"Brosse Nettoyante<br>Électrique Visage", q:'"Comment l\'utiliser — et quel réglage convient à ma peau?"', l1:"C'est quoi?", v1:"Une brosse électrique rechargeable pour nettoyer en profondeur les pores et exfolier doucement la peau.", l2:"Pour quoi?", v2:"Nettoyage quotidien ou deux fois par semaine avec votre nettoyant habituel. Aide contre les points noirs.", l3:"Avant d'acheter:", v3:"Vérifiez la compatibilité des têtes de brosse. Confirmez que le câble convient à votre prise. Charge USB universelle.", l4:"⚠ Avertissement", v4:"Ne pas utiliser sur acné active ou plaies ouvertes. Remplacer la tête tous les 3 mois. Ne pas partager.", l5:"Convient à:", v5:"Peau normale, grasse et mixte. Déconseillé pour les peaux très sensibles sans avis dermatologique.", fn:"Informations fournies à titre indicatif.<br>Lisez toujours l'étiquette avant utilisation." },
+    ru: { dir:"ltr", cat:"Уход за кожей", name:"Электрическая Щётка<br>для Очищения Лица", q:'"Как использовать — и какой режим подходит моей коже?"', l1:"Что это?", v1:"Перезаряжаемая щётка для глубокого очищения пор и мягкого отшелушивания.", l2:"Для чего?", v2:"Ежедневное очищение с обычным средством для умывания. Помогает против чёрных точек.", l3:"Перед покупкой:", v3:"Проверьте совместимость насадок. Убедитесь, что кабель подходит к розетке. Зарядка USB универсальная.", l4:"⚠ Предупреждение", v4:"Не использовать на активных угрях. Менять насадку каждые 3 месяца. Не использовать совместно.", l5:"Подходит для:", v5:"Нормальная, жирная и комбинированная кожа. Не рекомендуется для очень чувствительной кожи.", fn:"Информация предоставлена в качестве руководства.<br>Всегда читайте этикетку перед использованием." }
+  },
+  retinol: {
+    en: { dir:"ltr", cat:"Cosmetics", name:"Retinol<br>Night Cream", q:'"What does retinol actually do — and is it safe for me?"', l1:"What is this?", v1:"A night cream with Retinol (Vitamin A) that stimulates skin renewal and reduces fine lines.", l2:"What is it used for?", v2:"Applied at night to reduce wrinkles and even skin tone. Results in 4–8 weeks.", l3:"Before buying, check:", v3:"Beginners start with 0.25%–0.5%. Avoid if pregnant or breastfeeding. Do not mix with AHA/BHA or Vitamin C.", l4:"⚠ Warning", v4:"Use only at night — increases sun sensitivity. Apply SPF every morning. May cause redness in the first 2 weeks.", l5:"Suitable for:", v5:"Adults over 18. Not during pregnancy. Sensitive skin — start with low concentration.", fn:"Information provided as guidance only.<br>Always read the product label before use." },
+    he: { dir:"rtl", cat:"קוסמטיקה", name:"קרם לילה<br>עם רטינול", q:'"מה בעצם רטינול עושה — והאם זה בטוח עבורי?"', l1:"מה זה?", v1:"קרם לילה עם רטינול (ויטמין A) שמגרה התחדשות עור ומפחית קמטוטים.", l2:"למה משתמשים?", v2:"מורחים בלילה להפחתת קמטים ושיווי גוון. תוצאות בתוך 4–8 שבועות.", l3:"לפני הקנייה:", v3:"מתחילים — התחל עם 0.25%–0.5%. בהריון — הימנע לחלוטין. אל תערבב עם AHA/BHA או ויטמין C.", l4:"⚠ אזהרה", v4:"השתמש רק בלילה — מגביר רגישות לשמש. מרח SPF בכל בוקר. עלול לגרום לאדמומיות בשבועיים הראשונים.", l5:"מתאים ל:", v5:"מבוגרים מעל 18. לא בהריון. עור רגיש — התחל בריכוז נמוך.", fn:"המידע ניתן כהנחיה בלבד.<br>תמיד קרא את תווית המוצר לפני השימוש." },
+    fr: { dir:"ltr", cat:"Cosmétiques", name:"Crème de Nuit<br>au Rétinol", q:'"Que fait vraiment le rétinol — est-il sans danger?"', l1:"C'est quoi?", v1:"Une crème de nuit au Rétinol (Vitamine A) qui stimule le renouvellement cutané et réduit les ridules.", l2:"Pour quoi?", v2:"La nuit pour réduire les rides et unifier le teint. Résultats en 4–8 semaines.", l3:"Avant d'acheter:", v3:"Débutants : 0,25%–0,5%. Éviter en cas de grossesse. Ne pas mélanger avec AHA/BHA ou Vitamine C.", l4:"⚠ Avertissement", v4:"Uniquement la nuit — sensibilise au soleil. Appliquer SPF chaque matin. Rougeurs possibles les 2 premières semaines.", l5:"Convient à:", v5:"Adultes de plus de 18 ans. Déconseillé pendant la grossesse. Peau sensible : faible concentration.", fn:"Informations fournies à titre indicatif.<br>Lisez toujours l'étiquette avant utilisation." },
+    ru: { dir:"ltr", cat:"Косметика", name:"Ночной Крем<br>с Ретинолом", q:'"Что делает ретинол — и безопасен ли он для меня?"', l1:"Что это?", v1:"Ночной крем с Ретинолом (Витамин A), стимулирующий обновление кожи и уменьшающий морщины.", l2:"Для чего?", v2:"Наносится ночью. Результат через 4–8 недель регулярного использования.", l3:"Перед покупкой:", v3:"Новички — начинайте с 0,25%–0,5%. При беременности — полностью избегайте. Не смешивать с AHA/BHA или Витамином C.", l4:"⚠ Предупреждение", v4:"Только ночью — повышает чувствительность к солнцу. Наносите SPF каждое утро. Возможно покраснение в первые 2 недели.", l5:"Подходит для:", v5:"Взрослым от 18 лет. Не при беременности. Чувствительная кожа — начинайте с низкой концентрации.", fn:"Информация предоставлена в качестве руководства.<br>Всегда читайте этикетку перед использованием." }
+  },
+  vitaminc: {
+    en: { dir:"ltr", cat:"Cosmetics", name:"Vitamin C<br>Serum", q:'"When do I use it — and can it mix with my other products?"', l1:"What is this?", v1:"A concentrated serum with Vitamin C that brightens skin, fades dark spots, and boosts collagen.", l2:"What is it used for?", v2:"Morning, after cleansing, before moisturizer. Evens skin tone and adds natural glow.", l3:"Before buying, check:", v3:"Effective concentration: 10–20%. Store in dark, cool place. If turned orange or brown — oxidized, do not use. Check expiry date.", l4:"⚠ Warning", v4:"Do not mix with Retinol or Niacinamide in the same step. May tingle on first use. Always use SPF during the day.", l5:"Suitable for:", v5:"All skin types. Best for dull or uneven skin. Sensitive skin — start with 10%.", fn:"Information provided as guidance only.<br>Always read the product label before use." },
+    he: { dir:"rtl", cat:"קוסמטיקה", name:"סרום<br>ויטמין C", q:'"מתי משתמשים — והאם אפשר לערבב עם מוצרים אחרים?"', l1:"מה זה?", v1:"סרום מרוכז עם ויטמין C שמבהיר את העור, מפחית כתמים ומגביר ייצור קולגן.", l2:"למה משתמשים?", v2:"בבוקר, לאחר ניקוי, לפני קרם לחות. משווה גוון עור ומוסיף זוהר טבעי.", l3:"לפני הקנייה:", v3:"ריכוז יעיל: 10–20%. אחסן במקום קריר וחשוך. אם הפך כתום/חום — התחמצן, אל תשתמש. בדוק תוקף.", l4:"⚠ אזהרה", v4:"אל תערבב עם רטינול או ניאציאמיד. עלול לגרום לעקצוץ קל בהתחלה. תמיד מרח SPF ביום.", l5:"מתאים ל:", v5:"כל סוגי העור. יעיל במיוחד לעור עמום ולא אחיד. עור רגיש — התחל עם 10%.", fn:"המידע ניתן כהנחיה בלבד.<br>תמיד קרא את תווית המוצר לפני השימוש." },
+    fr: { dir:"ltr", cat:"Cosmétiques", name:"Sérum<br>Vitamine C", q:'"Quand l\'utiliser — peut-il se mélanger avec mes autres soins?"', l1:"C'est quoi?", v1:"Un sérum concentré à la Vitamine C qui illumine la peau, atténue les taches et stimule le collagène.", l2:"Pour quoi?", v2:"Le matin, après nettoyage, avant la crème. Unifie le teint et protège contre les agressions.", l3:"Avant d'acheter:", v3:"Concentration efficace : 10–20%. Conserver à l'abri de la lumière. Si viré orange/brun — oxydé, ne pas utiliser.", l4:"⚠ Avertissement", v4:"Ne pas mélanger avec Rétinol ou Niacinamide. Léger picotement possible au premier usage. Toujours utiliser SPF le jour.", l5:"Convient à:", v5:"Tous types de peau. Efficace pour peau terne ou inégale. Peau sensible : commencez avec 10%.", fn:"Informations fournies à titre indicatif.<br>Lisez toujours l'étiquette avant utilisation." },
+    ru: { dir:"ltr", cat:"Косметика", name:"Сыворотка<br>Витамин C", q:'"Когда использовать — можно ли смешивать с другими средствами?"', l1:"Что это?", v1:"Концентрированная сыворотка с Витамином C, осветляющая кожу и стимулирующая выработку коллагена.", l2:"Для чего?", v2:"Утром после очищения, перед увлажняющим кремом. Выравнивает тон и добавляет сияние.", l3:"Перед покупкой:", v3:"Концентрация 10–20% эффективна. Хранить в тёмном прохладном месте. Если стала оранжевой/коричневой — окислилась, не использовать.", l4:"⚠ Предупреждение", v4:"Не смешивать с Ретинолом или Ниацинамидом. Возможно лёгкое покалывание. Обязательно SPF днём.", l5:"Подходит для:", v5:"Всех типов кожи. Особенно для тусклой кожи. Чувствительная — начинайте с 10%.", fn:"Информация предоставлена в качестве руководства.<br>Всегда читайте этикетку перед использованием." }
+  }
+};
+
+function setLang(product, lang, btn) {
+  const d = translations[product][lang];
+  const el = id => document.getElementById(product+'-'+id);
+  document.getElementById(product).dir = d.dir;
+  el('cat').textContent = d.cat;
+  el('name').innerHTML = d.name;
+  el('q').textContent = d.q;
+  ['l1','v1','l2','v2','l3','v3','l4','v4','l5','v5'].forEach(k => el(k).textContent = d[k]);
+  el('fn').innerHTML = d.fn;
+  document.querySelectorAll('#'+product+' .lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#'+product+' .field').forEach(f => { f.style.animation='none'; setTimeout(()=>f.style.animation='fadeIn 0.3s ease',10); });
+}
+
+function showProduct() {
+  const hash = window.location.hash.replace('#','') || 'brush';
+  const valid = ['brush','retinol','vitaminc'];
+  const target = valid.includes(hash) ? hash : 'brush';
+  document.querySelectorAll('.product-page').forEach(p => p.classList.remove('active'));
+  document.getElementById(target).classList.add('active');
+}
+
+window.addEventListener('hashchange', showProduct);
+window.addEventListener('load', showProduct);
+</script>
+</body>
+</html>
